@@ -8,7 +8,7 @@ function cd { pwd >> ~/.dirhistory; tail -n 50 ~/.dirhistory > ~/.dirhistory.tmp
 function cl { if [[ -z $1 ]]; then a=1; else a=$1; fi; dest=$(tail -n $a ~/.dirhistory | head -n1); cd $dest ;}
 function cdh { if [[ -z $1 ]]; then a=10; else a=$1; fi; tail -n $1 ~/.dirhistory ;}
 
-for i in `seq 1 30`; do al=$(for j in `seq 1 $i`; do printf '.'; done); target=$(for j in `seq 1 $i`; do printf '../'; done) ; alias .$al=$target; done
+for i in `seq 1 30`; do al=$(for j in `seq 1 $i`; do printf '.'; done); target=$(for j in `seq 1 $i`; do printf '../'; done) ; alias .$al="cd $target"; done
 
 function shortcut { loc=`readlink -f $2`; echo "alias $1=\"cd $loc\"" >> ~/.bash_aliases ; source ~/.bash_aliases; }
 
