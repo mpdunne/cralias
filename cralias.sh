@@ -52,4 +52,5 @@ function superget { wget -r -nH -nd -np $1 -N *index* ;}
 # Processes
 ##########################
 
+alias vl="watch -n 0.1 ls -l"
 function superkill { kill $(ps ux | grep "$1" | awk '{print $2}' );}
