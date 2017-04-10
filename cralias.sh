@@ -14,7 +14,6 @@ alias home='cd ~'
 alias aliases='vim ~/.bash_aliases; source ~/.bash_aliases'
 alias bashrc="vim ~/.bashrc"
 
-
 ##########################
 # Text manipulation
 ##########################
@@ -28,6 +27,11 @@ function rt { sed -r "s/ +/\t/g" $1 ;}
 ##########################
 
 function fn { find . -name "$1" ;}
+
+##########################
+# Sorting things
+##########################
+alias sk="sort -k"
 
 ##########################
 # less variants
@@ -44,4 +48,8 @@ function lesssr { less -SR $1 ;}
 
 function superget { wget -r -nH -nd -np $1 -N *index* ;}
 
+##########################
+# Processes
+##########################
 
+function superkill { kill $(ps ux | grep "$1" | awk '{print $2}' );}
