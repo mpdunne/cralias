@@ -15,6 +15,11 @@ function flils { sed -r "s/^>(.*)$/£££>\1###/g" $1 | tr '\n' ' ' | sed -r "s/
 
 function frep { flal $2 | grep "$1" | sed -r "s/(.*)###(.*)/\2\n\1/g" ;}
 
+##########################
+# Sequence generation
+##########################
+function ranseqn { cat /dev/urandom | tr -cd 'acgt' | head -c $1 ; }
+function ranseqp { cat /dev/urandom | tr -cd 'ARNDCQEGHILKMFPOSUTWYV' | head -c $1 ; }
 
 ##########################
 # Gtf manipulation
