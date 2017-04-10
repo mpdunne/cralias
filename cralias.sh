@@ -29,6 +29,11 @@ function rt { sed -r "s/ +/\t/g" $1 ;}
 function fn { find . -name "$1" ;}
 
 ##########################
+# cat variants
+##########################
+function dog { for f in $@; do echo $f; cat $f; done;}
+
+##########################
 # Sorting things
 ##########################
 alias sk="sort -k"

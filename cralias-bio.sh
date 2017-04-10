@@ -22,6 +22,11 @@ function ranseqn { cat /dev/urandom | tr -cd 'acgt' | head -c $1 ; }
 function ranseqp { cat /dev/urandom | tr -cd 'ARNDCQEGHILKMFPOSUTWYV' | head -c $1 ; }
 
 ##########################
+# Sequence alignments
+##########################
+alias mq="mafft --quiet"
+
+##########################
 # Gtf manipulation
 ##########################
 
