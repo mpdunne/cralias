@@ -10,6 +10,8 @@ function cdh { if [[ -z $1 ]]; then a=10; else a=$1; fi; tail -n $1 ~/.dirhistor
 for i in `seq 1 30`; do al=$(for j in `seq 1 $i`; do printf '.'; done); target=$(for j in `seq 1 $i`; do printf '../'; done) ; alias .$al="cd $target"; done
 function shortcut { loc=`readlink -f $2`; echo "alias $1=\"cd $loc\"" >> ~/.bash_aliases ; source ~/.bash_aliases; }
 
+function md { mkdir -p $1; cd $1 ;}
+
 alias home='cd ~'
 alias aliases='vim ~/.bash_aliases; source ~/.bash_aliases'
 alias bashrc="vim ~/.bashrc"
@@ -42,6 +44,9 @@ function pfind { find . -name "*$1*" ;}
 # cat variants
 ##########################
 function dog { for f in $@; do echo $f; cat $f; done;}
+function puss { for file in `ls $1`; do cat $file; done ;}
+function pooch { for file in `ls $1`; do dog $file; done ;}
+
 
 ##########################
 # Sorting things
@@ -51,6 +56,7 @@ alias sk="sort -k"
 ##########################
 # less variants
 #########################
+#http://misc.flogisoft.com/bash/tip_colors_and_formatting
 function lesc { column -t -n -s $'\t' $1 | less -S ;}
 function lescn { grep -v "NA" $1 | lesc ;}
 function lesss { less -S $1 ;}
