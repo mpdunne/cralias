@@ -19,6 +19,14 @@ alias sourcerc="source ~/.bashrc"
 alias pony="source ~/.bash_aliases"
 
 ##########################
+# Sandbox
+##########################
+mkdir -p ~/.sandbox
+alias sandbox="cd ~/.sandbox"
+function sand { a=`mktemp -d ~/.sandbox/tmp.XXXXX`; cd $a ;}
+function clearsand { a=`rm -r ./sandbox/*` ;}
+
+##########################
 # Typos
 ##########################
 alias cd..="cd .."
@@ -90,3 +98,8 @@ alias cgrep="\grep --color=always"
 # awk variants
 ##########################
 alias auk="awk -F'\t'"
+
+##########################
+# calculations
+##########################
+alias mean="awk '{s+=\$1}END{print s/NR}' RS=\"\n\""
