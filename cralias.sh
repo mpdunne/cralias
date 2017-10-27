@@ -103,3 +103,9 @@ alias auk="awk -F'\t'"
 # calculations
 ##########################
 alias mean="awk '{s+=\$1}END{print s/NR}' RS=\"\n\""
+
+
+##########################
+# Clear screen
+##########################
+alias cls='printf "\033c"'
