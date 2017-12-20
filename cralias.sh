@@ -17,6 +17,7 @@ alias aliases='vim ~/.bash_aliases; source ~/.bash_aliases'
 alias bashrc="vim ~/.bashrc"
 alias sourcerc="source ~/.bashrc"
 alias pony="source ~/.bash_aliases"
+alias unik="awk '{if (a[\$0] == \"\") {print; a[\$0]=1} }'"
 
 ##########################
 # Sandbox
@@ -55,7 +56,6 @@ function dog { for f in $@; do echo $f; cat $f; done;}
 function puss { for file in `ls $1`; do cat $file; done ;}
 function pooch { for file in `ls $1`; do dog $file; done ;}
 
-
 ##########################
 # Sorting things
 ##########################
@@ -80,6 +80,7 @@ function superget { wget -r -nH -nd -np $1 -N *index* ;}
 ##########################
 alias vl="watch -n 0.1 ls -l"
 alias vk="watch -n 0.1 ls -lt"
+alias ck="watch -n 0.1 \"ls -f | wc -l \""
 function vll { watch -n 0.1 "ls -l | grep \"$1\"" ;}
 function vkk { watch -n 0.1 "ls -lt | grep \"$1\"" ;}
 function superkill { kill $(ps ux | grep "$1" | awk '{print $2}' );}
@@ -95,6 +96,11 @@ alias lg="ls -l | grep "
 alias cgrep="\grep --color=always"
 
 ##########################
+# live word count
+##########################
+alias wcl="awk 'BEGIN{a=0; printf \"\\r\"a}{a++; printf \"\\r\"a}END{printf \"\\n\"}'"
+
+##########################
 # awk variants
 ##########################
 alias auk="awk -F'\t'"
@@ -103,7 +109,6 @@ alias auk="awk -F'\t'"
 # calculations
 ##########################
 alias mean="awk '{s+=\$1}END{print s/NR}' RS=\"\n\""
-
 
 ##########################
 # Clear screen
