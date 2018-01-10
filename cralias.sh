@@ -80,6 +80,7 @@ function superget { wget -r -nH -nd -np $1 -N *index* ;}
 ##########################
 alias vl="watch -n 0.1 ls -l"
 alias vk="watch -n 0.1 ls -lt"
+alias fk="watch -n 0.1 'find . -printf \"%T@ %Tc %s %p \\n\" | sort -nr | column -t'"
 alias ck="watch -n 0.1 \"ls -f | wc -l \""
 function vll { watch -n 0.1 "ls -l | grep \"$1\"" ;}
 function vkk { watch -n 0.1 "ls -lt | grep \"$1\"" ;}
