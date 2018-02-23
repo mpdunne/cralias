@@ -1,7 +1,8 @@
-# Cralias - a set of useful aliases for bash
 
 ![alt text](http://www.empede.co.uk/imgrepos/Cralias.png "cralias")
 
+
+# Cralias - a set of useful aliases for bash
 
 **Cralias** and **Cralias Bio** are alias sets for a unix shell.
 
