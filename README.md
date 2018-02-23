@@ -1,5 +1,8 @@
 # Cralias - a set of useful aliases for bash
 
+![alt text](https://www.empede.co.uk/imgrepos/cralias.png "cralias")
+
+
 **Cralias** and **Cralias Bio** are alias sets for a unix shell.
 
 **Cralias** is a set of useful commands for the terminal, such as live file lists (`vk`), easy sandboxing (`sand`) and quick uniq (`unik`), among many many others.
