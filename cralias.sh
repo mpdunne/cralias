@@ -39,6 +39,8 @@ mkdir -p ~/.sandbox
 alias sandbox="cd ~/.sandbox"
 function sand { a=`mktemp -d ~/.sandbox/tmp.XXXXX`; cd $a ;}
 function clearsand { a=`rm -r ./sandbox/*` ;}
+# Quick jot for notes
+function jot { a=`mktemp`; vim $a; rm $a ;}
 
 ##########################
 # Typos
