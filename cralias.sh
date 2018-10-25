@@ -163,7 +163,7 @@ alias cls='printf "\033c"'
 # Python shortcuts
 ##########################
 # Python 2
-alias py2='python 2'
+alias py2='python2'
 
 # Python 3
-alias py3='python 3'
+alias py3='python3'
