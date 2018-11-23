@@ -39,7 +39,7 @@ mkdir -p ~/.sandbox
 alias sandbox="cd ~/.sandbox"
 function sand { a=`mktemp -d ~/.sandbox/tmp.XXXXX`; cd $a ;}
 function clearsand { a=`rm -r ./sandbox/*` ;}
-# Quick jot for notes
+# Quick jot for notes. Vim without the intro screen.
 function jot { a=`mktemp`; vim $a; rm $a ;}
 
 ##########################
