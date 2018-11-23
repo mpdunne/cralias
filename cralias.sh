@@ -17,7 +17,9 @@ function cdh { if [[ -z $1 ]]; then a=10; else a=$1; fi; tail -n $1 ~/.dirhistor
 ###########################
 alias aliases='vim ~/.bash_aliases; source ~/.bash_aliases'
 alias bashrc="vim ~/.bashrc"
-alias sourcerc="source ~/.bashrc"
+# Horse rhymes with source.
+alias horse="source ~/.bashrc"
+# Only source the aliases.
 alias pony="source ~/.bash_aliases"
 
 ###########################
