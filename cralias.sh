@@ -21,6 +21,8 @@ alias bashrc="vim ~/.bashrc"
 alias horse="source ~/.bashrc"
 # Only source the aliases.
 alias pony="source ~/.bash_aliases"
+alias cralias="vim ${BASH_SOURCE[0]}"
+alias craliasd="cd $( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 
 ###########################
 # Shortcuts
