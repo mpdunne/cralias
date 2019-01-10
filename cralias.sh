@@ -132,6 +132,8 @@ function superkill { kill $(ps ux | grep -P "$1" | awk '{print $2}' );}
 alias lg="ls -l | grep -P "
 # View hidden files, too
 alias la="ls -a"
+# Human-readable
+alias lh="ls -lh"
 
 ##########################
 # grep variants
