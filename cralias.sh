@@ -8,9 +8,9 @@ function md { mkdir -p $1; cd $1 ;}
 # Home is where the heart is
 alias home='cd ~'
 # Save and recover directory history
-function cd { pwd >> ~/.dirhistory; tail -n 50 ~/.dirhistory > ~/.dirhistory.tmp; mv ~/.dirhistory.tmp  ~/.dirhistory; builtin cd $1 ;}
-function cl { if [[ -z $1 ]]; then a=1; else a=$1; fi; dest=$(tail -n $a ~/.dirhistory | head -n1); cd $dest ;}
+function cd { echo "$(cat <(cat ~/.dirhistory 2>/dev/null) <(pwd))" > ~/.dirhistory; builtin cd $1 ;}
 function cdh { if [[ -z $1 ]]; then a=10; else a=$1; fi; tail -n $1 ~/.dirhistory ;}
+alias cl="cd -"
 
 ###########################
 # Quick access
