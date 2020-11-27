@@ -15,10 +15,16 @@ alias cl="cd -"
 ###########################
 # Quick access
 ###########################
+# Assume either zsh or bash. Use $BASH_VERSION to distinguish bash and others.
+if [ -n "$ZSH_VERSION" ]; then
+   shrc="~/.zshrc"
+else
+   shrc="~/.bashrc"
+fi
 alias aliases='vim ~/.bash_aliases; source ~/.bash_aliases'
-alias bashrc="vim ~/.bashrc"
+alias bashrc="vim $shrc"
 # Horse rhymes with source.
-alias horse="source ~/.bashrc"
+alias horse="source $shrc"
 # Only source the aliases.
 alias pony="source ~/.bash_aliases"
 alias cralias="vim ${BASH_SOURCE[0]}"
@@ -57,12 +63,12 @@ alias les="less"
 ##########################
 # Text manipulation
 ##########################
-# To upper case
+# To upper case (echo ... | up)
 function up { awk '{print toupper($0)}' ; }
-# To lower case
-function low { awk '{print tolower($0)}' ; }
-# Replace whitespace with tab
-function rt { sed -r "s/ +/\t/g" $1 ;}
+# To lower case (echo ... | low)
+function low { echo "$1" | awk '{print tolower($0)}' ; }
+# Replace whitespace with tab (echo ... | rt)
+function rt { echo "$1" | sed -r "s/ +/\t/g" $1 ;}
 
 ##########################
 # Finding things
