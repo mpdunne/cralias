@@ -42,7 +42,7 @@ function shortcut { loc=`readlink -f $2`; echo "alias $1=\"cd $loc\"" >> ~/.bash
 mkdir -p ~/.sandbox
 alias sandbox="cd ~/.sandbox"
 function sand { a=`mktemp -d ~/.sandbox/tmp.XXXXX`; cd $a ;}
-function clearsand { a=`rm -r ./sandbox/*` ;}
+function clearsand { a=`rm -r ~/.sandbox/*` ;}
 # Quick jot for notes. Vim without the intro screen.
 function jot { a=`mktemp`; vim $a; rm $a ;}
 
