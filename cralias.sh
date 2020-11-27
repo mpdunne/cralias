@@ -17,14 +17,14 @@ alias cl="cd -"
 ###########################
 # Assume either zsh or bash. Use $BASH_VERSION to distinguish bash and others.
 if [ -n "$ZSH_VERSION" ]; then
-   shrc="~/.zshrc"
+   SHRC="~/.zshrc"
 else
-   shrc="~/.bashrc"
+   SHRC="~/.bashrc"
 fi
 alias aliases='vim ~/.bash_aliases; source ~/.bash_aliases'
-alias bashrc="vim $shrc"
+alias bashrc="vim $SHRC"
 # Horse rhymes with source.
-alias horse="source $shrc"
+alias horse="source $SHRC"
 # Only source the aliases.
 alias pony="source ~/.bash_aliases"
 alias cralias="vim ${BASH_SOURCE[0]}"
@@ -122,6 +122,12 @@ function superget { wget -r -nH -nd -np $1 -N *index* ;}
 ##########################
 # Processes
 ##########################
+# Use gfind if available
+if hash gfind 2>/dev/null; then
+    FIND_COMMAND="gfind"
+else
+    FIND_COMMAND="find"
+fi
 # Watch files being changed in directory. Unsorted and sorted.
 alias vl="watch -n 0.1 ls -l"
 alias vk="watch -n 0.1 ls -lt"
@@ -129,7 +135,7 @@ alias vk="watch -n 0.1 ls -lt"
 function vll { watch -n 0.1 "ls -l | grep -P \"$1\"" ;}
 function vkk { watch -n 0.1 "ls -lt | grep -P \"$1\"" ;}
 # Watch all files being sorted in directory and subdirectories. Sorted.
-alias fk="watch -n 0.1 'find . -printf \"%T@ %Tc %s %p \\n\" | sort -nr | column -t'"
+alias fk="watch -n 0.1 \"$FIND_COMMAND . -printf '%T@ %Tc %s %p \\n' | sort -nr | column -t\""
 # Live file count for files in directory
 alias ck="watch -n 0.1 \"ls -f | wc -l \""
 # Careful! kill all processes issued by current user matching a regex string
