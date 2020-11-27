@@ -102,10 +102,14 @@ alias unik="awk '{if (a[\$0] == \"\") {print; a[\$0]=1} }'"
 #http://misc.flogisoft.com/bash/tip_colors_and_formatting
 # Less - no word wrap
 function lesss { less -S $1 ;}
-# Less - align columns, no word wrap
-function lesc { column -t -n -s $'\t' $1 | less -S ;}
+# Less - align columns, comma-separated, no word wrap
+function lesc { column -t -s ',' $1 | less -S ;}
+# Less - align columns, tab-separated, no word wrap
+function lest { column -t -s $'\t' $1 | less -S ;}
 # Lesc omitting "NA"
 function lescn { grep -v "NA" $1 | lesc ;}
+# Lest omitting "NA"
+function lestn { grep -v "NA" $1 | lest ;}
 # Lesss with colours
 function lesssr { less -SR $1 ;}
 
