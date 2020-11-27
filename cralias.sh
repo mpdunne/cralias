@@ -9,7 +9,7 @@ function md { mkdir -p $1; cd $1 ;}
 alias home='cd ~'
 # Save and recover directory history
 function cd { echo "$(cat <(cat ~/.dirhistory 2>/dev/null) <(pwd))" > ~/.dirhistory; builtin cd $1 ;}
-function cdh { if [[ -z $1 ]]; then a=10; else a=$1; fi; tail -n $1 ~/.dirhistory ;}
+function cdh { if [[ -z $1 ]]; then a=10; else a=$1; fi; tail -n $a ~/.dirhistory ;}
 alias cl="cd -"
 
 ###########################
@@ -136,6 +136,8 @@ alias ll="ls -l"
 alias la="ls -la"
 # Human-readable
 alias lh="ls -lh"
+# For lazy people
+alias l="ls"
 
 ##########################
 # grep variants
