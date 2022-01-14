@@ -137,7 +137,7 @@ function vkk { watch -n 0.1 "ls -lt | grep -P \"$1\"" ;}
 # Watch all files being sorted in directory and subdirectories. Sorted.
 alias fk="watch -n 0.1 \"$FIND_COMMAND . -printf '%T@ %Tc %s %p \\n' | sort -nr | column -t\""
 # Live file count for files in directory
-alias ck="watch -n 0.1 \"ls -f | wc -l \""
+alias ck="watch -n 0.1 \"ls | wc -l \""
 # Careful! kill all processes issued by current user matching a regex string
 function superkill { kill $(ps ux | grep -P "$1" | awk '{print $2}' );}
 
