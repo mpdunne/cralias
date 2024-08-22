@@ -8,12 +8,16 @@ for i in `seq 1 30`; do al=$(for j in `seq 1 $i`; do printf '.'; done); target=$
 # Make directory and enter it
 function md { mkdir -p $1; cd $1 ;}
 
-# Home is where the heart is
+# Go to home directory (equivalent to just typing cd).
 alias home='cd ~'
 
-# Save and recover directory history
+# Change cd behaviour so that it saves a list of all directories visited.
 function cd { echo "$(cat <(cat ~/.dirhistory 2>/dev/null) <(pwd))" > ~/.dirhistory; builtin cd $1 ;}
+
+# Return a list of the last n directories visited (e.g. cdh 10)
 function cdh { if [[ -z $1 ]]; then a=10; else a=$1; fi; tail -n $a ~/.dirhistory ;}
+
+# Go to the last directory visited.
 alias cl="cd -"
 
 
@@ -21,29 +25,41 @@ alias cl="cd -"
 # Quick access
 ###########################
 
+# This part is necessary to tell whether we're on bash or zsh.
 # Assume either zsh or bash. Use $BASH_VERSION to distinguish bash and others.
 if [ -n "$ZSH_VERSION" ]; then
    SHRC="~/.zshrc"
 else
    SHRC="~/.bashrc"
 fi
-alias aliases='vim ~/.bash_aliases; source ~/.bash_aliases'
-alias bashrc="vim $SHRC"
 
-# Horse rhymes with source.
+# Open the shrc file in the home directory. Source it afterwards.
+alias bashrc="vim $SHRC; source ~$SHRC"
+
+# Source the shrc file. Horse rhymes with source.
 alias horse="source $SHRC"
 
-# Only source the aliases.
+# Open the "aliases" file in the home directory. Source it afterwards.
+alias aliases='vim ~/.bash_aliases; source ~/.bash_aliases'
+
+# Source the aliases file.
 alias pony="source ~/.bash_aliases"
+
+# Open the cralias file. (This doesn't work on mac).
 alias cralias="vim ${BASH_SOURCE[0]}"
+
+# Open the directory containing the cralias file.
 alias craliasd="cd $( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
+
 
 ###########################
 # Shortcuts
 ###########################
 
-# Fave place
+# Set current directory as favourite place
 function setfave { pwd > ~/.faveplace ; echo "set faveplace to `pwd`"; }
+
+# Go to favourite place.
 function fave { cd `cat ~/.faveplace` ;}
 
 # Set a shortcut (e.g. shortcut dest ~/destination)
@@ -58,8 +74,13 @@ function shortcut { loc=`readlink -f $2`; echo "alias $1=\"cd $loc\"" >> ~/.bash
 # Type sand to go to a new sandbox
 # Type clearsand to clear all sandboxes
 mkdir -p ~/.sandbox
-alias sandbox="cd ~/.sandbox"
+
+# Create and enter a sandbox directory
 function sand { a=`mktemp -d ~/.sandbox/tmp.XXXXX`; cd $a ;}
+
+# Go to the directory containing all sandboxes.
+alias sandbox="cd ~/.sandbox"
+
 function clearsand { a=`rm -r ~/.sandbox/*` ;}
 
 # Quick jot for notes. Vim without the intro screen.
