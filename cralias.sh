@@ -34,7 +34,7 @@ else
 fi
 
 # Open the shrc file in the home directory. Source it afterwards.
-alias bashrc="vim $SHRC; source ~$SHRC"
+alias bashrc="vim $SHRC; source $SHRC"
 
 # Source the shrc file. Horse rhymes with source.
 alias horse="source $SHRC"
